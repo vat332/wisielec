@@ -33,15 +33,23 @@ const Game = () => {
       {guessedLetters.includes(letter) ? letter : "_"}
     </span>
   ));
+
+  const renderGameStatus = () => {
+    return (
+      <section>
+        {isGameOver ? (
+          isGameWon ? (
+            <GameStatus isGameWon={isGameWon} />
+          ) : (
+            <GameStatus isGameLost={isGameLost} />
+          )
+        ) : null}
+      </section>
+    );
+  };
   return (
     <div className="md:max-w-[800px] justify-center items-center">
-      {isGameOver ? (
-        isGameWon ? (
-          <GameStatus isGameWon={isGameWon} />
-        ) : (
-          <GameStatus isGameLost={isGameLost} />
-        )
-      ) : null}
+      {renderGameStatus()}
 
       <section className="gap-2 flex flex-wrap justify-center items-center mt-10 text-2xl font-bold">
         {languages.map((language, index) => {
