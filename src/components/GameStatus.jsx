@@ -1,28 +1,44 @@
-const GameStatus = (props) => {
+const GameStatus = ({
+  isGameOver,
+  isGameWon,
+  isGameLost,
+  isLastGuessedIncorrect,
+  farewellText,
+}) => {
   const gameWon = {
-    title: "Wygrałeś👑",
-    message: "🎉Wisielec Uratowany🎉",
+    title: "Wygrałeś 👑",
+    message: "🎉 Wisielec uratowany! 🎉",
     backgroundColor: "bg-green-900",
   };
+
   const gameLost = {
-    title: "Przegrałeś😢",
+    title: "Przegrałeś 😢",
     message: "Nie udało się uratować wisielca 😢",
     backgroundColor: "bg-red-900",
   };
-  return (
-    <section
-      className={`flex flex-col items-center justify-center gap-4 p-4 text-center mt-10 ${
-        props.isGameWon ? gameWon.backgroundColor : gameLost.backgroundColor
-      } rounded-full shadow-lg p-10`}
-    >
-      <h2 className="text-6xl font-bold ">
-        {props.isGameWon ? gameWon.title : gameLost.title}
-        <span className="text-4xl mt-8 flex justify-center text-yellowish-50">
-          {props.isGameWon ? gameWon.message : gameLost.message}
-        </span>
-      </h2>
-    </section>
-  );
+
+  if (isLastGuessedIncorrect && !isGameOver && farewellText) {
+    return (
+      <div className="flex flex-col items-center justify-center gap-4 p-10 text-center mt-10 bg-purple-800 text-white rounded-full shadow-lg">
+        <h1 className="text-4xl font-bold">{farewellText}</h1>
+      </div>
+    );
+  }
+
+  if (isGameOver) {
+    const status = isGameWon ? gameWon : gameLost;
+
+    return (
+      <section
+        className={`flex flex-col items-center justify-center gap-4 p-10 text-center mt-10 ${status.backgroundColor} text-white rounded-full shadow-lg`}
+      >
+        <h2 className="text-6xl font-bold">{status.title}</h2>
+        <span className="text-4xl mt-4">{status.message}</span>
+      </section>
+    );
+  }
+
+  return null;
 };
 
 export default GameStatus;

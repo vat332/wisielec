@@ -1,5 +1,6 @@
 import { useState } from "react";
 import languages from "../data/constans";
+import { getFarewellText } from "../data/utils";
 import Button from "./Button";
 import GameStatus from "./GameStatus";
 import GameWord from "./GameWord";
@@ -19,7 +20,9 @@ const Game = () => {
   ).length;
   const isGameLost = wrongGuessCount >= languages.length - 1;
   const isGameOver = isGameWon || isGameLost;
-
+  const lastGuessedLetter = guessedLetters[guessedLetters.length - 1];
+  const isLastGuessedIncorrect =
+    lastGuessedLetter && !currentWord.includes(lastGuessedLetter);
   function handleLetterClick(letter) {
     setGuessedLetters((prevLetters) =>
       prevLetters.includes(letter) ? prevLetters : [...prevLetters, letter]
@@ -37,16 +40,21 @@ const Game = () => {
   const renderGameStatus = () => {
     return (
       <section>
-        {isGameOver ? (
-          isGameWon ? (
-            <GameStatus isGameWon={isGameWon} />
-          ) : (
-            <GameStatus isGameLost={isGameLost} />
-          )
-        ) : null}
+        <GameStatus
+          isGameOver={isGameOver}
+          isGameWon={isGameWon}
+          isGameLost={isGameLost}
+          isLastGuessedIncorrect={isLastGuessedIncorrect}
+          farewellText={
+            isLastGuessedIncorrect && !isGameOver
+              ? getFarewellText(languages[wrongGuessCount - 1].name)
+              : null
+          }
+        />
       </section>
     );
   };
+
   return (
     <div className="md:max-w-[800px] justify-center items-center">
       {renderGameStatus()}
