@@ -1,9 +1,11 @@
 import { useState } from "react";
 import languages from "../data/constans";
 import GameWord from "./GameWord";
+import Keyboard from "./Keyboard";
 import Languages from "./Languages";
 const Game = () => {
   const [currentWord, setCurrentWord] = useState("react");
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
   const letterElements = currentWord.split("").map((letter, index) => (
     <span
       key={index}
@@ -26,6 +28,7 @@ const Game = () => {
         ))}
       </section>
       <GameWord letterElements={letterElements} />
+      <Keyboard letters={alphabet} />
     </>
   );
 };
