@@ -34,6 +34,16 @@ const languages = [
     backgroundColor: "#ffd742",
     color: "#1e1e1e",
   },
+  {
+    name: "Ruby",
+    backgroundColor: "#c72c41",
+    color: "#F9F4DA",
+  },
+  {
+    name: "Assembly",
+    backgroundColor: "#328AFF",
+    color: "#F9F4DA",
+  },
 ];
 
 export default languages;
