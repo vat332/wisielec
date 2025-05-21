@@ -2,9 +2,9 @@ import Header from "./components/Header";
 
 const App = () => {
   return (
-    <div>
+    <main className="flex justify-center p-[2rem]">
       <Header />
-    </div>
+    </main>
   );
 };
 
