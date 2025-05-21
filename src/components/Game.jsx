@@ -18,7 +18,7 @@ const Game = () => {
       key={index}
       className="w-15 py-4 uppercase border-b-4 text-center font-light bg-gray-700"
     >
-      {letter}
+      {guessedLetters.includes(letter) ? letter : "_"}
     </span>
   ));
   return (
