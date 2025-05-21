@@ -34,7 +34,7 @@ const Game = () => {
     </span>
   ));
   return (
-    <>
+    <div className="md:max-w-[800px] justify-center items-center">
       {isGameOver ? (
         isGameWon ? (
           <GameStatus isGameWon={isGameWon} />
@@ -58,15 +58,19 @@ const Game = () => {
           );
         })}
       </section>
-      <GameWord letterElements={letterElements} />
-      <Keyboard
-        letters={alphabet}
-        onLetterClick={handleLetterClick}
-        currentWord={currentWord}
-        guessedLetters={guessedLetters}
-      />
+
+      <section className="flex flex-col items-center justify-center">
+        <GameWord letterElements={letterElements} />
+        <Keyboard
+          letters={alphabet}
+          onLetterClick={handleLetterClick}
+          currentWord={currentWord}
+          guessedLetters={guessedLetters}
+        />
+      </section>
+
       {isGameOver && <Button />}
-    </>
+    </div>
   );
 };
 
