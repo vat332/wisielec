@@ -4,7 +4,7 @@ const GameStatus = () => {
       <h2 className="text-6xl font-bold ">
         Wygrałeś👑
         <span className="text-4xl mt-8 flex justify-center text-yellowish-50">
-          🎉Uratowałeś Wisielca🎉
+          🎉Wisielec Uratowany🎉
         </span>
       </h2>
     </section>
