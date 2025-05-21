@@ -6,6 +6,13 @@ import Languages from "./Languages";
 const Game = () => {
   const [currentWord, setCurrentWord] = useState("react");
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  const [guessedLetters, setGuessedLetters] = useState([]);
+
+  function handleLetterClick(letter) {
+    setGuessedLetters((prevLetters) =>
+      prevLetters.includes(letter) ? prevLetters : [...prevLetters, letter]
+    );
+  }
   const letterElements = currentWord.split("").map((letter, index) => (
     <span
       key={index}
@@ -14,7 +21,6 @@ const Game = () => {
       {letter}
     </span>
   ));
-
   return (
     <>
       <section className="gap-2 flex flex-wrap justify-center items-center mt-10 text-2xl font-bold">
@@ -28,7 +34,7 @@ const Game = () => {
         ))}
       </section>
       <GameWord letterElements={letterElements} />
-      <Keyboard letters={alphabet} />
+      <Keyboard letters={alphabet} onLetterClick={handleLetterClick} />
     </>
   );
 };
