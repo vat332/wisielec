@@ -7,7 +7,10 @@ const Game = () => {
   const [currentWord, setCurrentWord] = useState("react");
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
   const [guessedLetters, setGuessedLetters] = useState([]);
-
+  const wrongGuessCount = guessedLetters.filter(
+    (letter) => !currentWord.includes(letter)
+  ).length;
+  console.log(wrongGuessCount);
   function handleLetterClick(letter) {
     setGuessedLetters((prevLetters) =>
       prevLetters.includes(letter) ? prevLetters : [...prevLetters, letter]
@@ -24,14 +27,19 @@ const Game = () => {
   return (
     <>
       <section className="gap-2 flex flex-wrap justify-center items-center mt-10 text-2xl font-bold">
-        {languages.map((language) => (
-          <Languages
-            key={language.name}
-            name={language.name}
-            backgroundColor={language.backgroundColor}
-            color={language.color}
-          />
-        ))}
+        {languages.map((language, index) => {
+          const isLanguageLost = index < wrongGuessCount;
+
+          return (
+            <Languages
+              key={language.name}
+              name={language.name}
+              backgroundColor={language.backgroundColor}
+              color={language.color}
+              isLost={isLanguageLost}
+            />
+          );
+        })}
       </section>
       <GameWord letterElements={letterElements} />
       <Keyboard
