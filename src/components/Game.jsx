@@ -1,5 +1,6 @@
 import { useState } from "react";
 import languages from "../data/constans";
+import Button from "./Button";
 import GameWord from "./GameWord";
 import Keyboard from "./Keyboard";
 import Languages from "./Languages";
@@ -7,10 +8,16 @@ const Game = () => {
   const [currentWord, setCurrentWord] = useState("react");
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
   const [guessedLetters, setGuessedLetters] = useState([]);
+  const isGameWon = currentWord
+    .split("")
+    .every((letter) => guessedLetters.includes(letter));
+
   const wrongGuessCount = guessedLetters.filter(
     (letter) => !currentWord.includes(letter)
   ).length;
-  console.log(wrongGuessCount);
+  const isGameLost = wrongGuessCount >= languages.length - 1;
+  const isGameOver = isGameWon || isGameLost;
+
   function handleLetterClick(letter) {
     setGuessedLetters((prevLetters) =>
       prevLetters.includes(letter) ? prevLetters : [...prevLetters, letter]
@@ -48,6 +55,7 @@ const Game = () => {
         currentWord={currentWord}
         guessedLetters={guessedLetters}
       />
+      {isGameOver && <Button />}
     </>
   );
 };
