@@ -34,7 +34,12 @@ const Game = () => {
         ))}
       </section>
       <GameWord letterElements={letterElements} />
-      <Keyboard letters={alphabet} onLetterClick={handleLetterClick} />
+      <Keyboard
+        letters={alphabet}
+        onLetterClick={handleLetterClick}
+        currentWord={currentWord}
+        guessedLetters={guessedLetters}
+      />
     </>
   );
 };
