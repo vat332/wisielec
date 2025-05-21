@@ -1,9 +1,11 @@
 import { useState } from "react";
 import languages from "../data/constans";
 import Button from "./Button";
+import GameStatus from "./GameStatus";
 import GameWord from "./GameWord";
 import Keyboard from "./Keyboard";
 import Languages from "./Languages";
+
 const Game = () => {
   const [currentWord, setCurrentWord] = useState("react");
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -33,6 +35,14 @@ const Game = () => {
   ));
   return (
     <>
+      {isGameOver ? (
+        isGameWon ? (
+          <GameStatus isGameWon={isGameWon} />
+        ) : (
+          <GameStatus isGameLost={isGameLost} />
+        )
+      ) : null}
+
       <section className="gap-2 flex flex-wrap justify-center items-center mt-10 text-2xl font-bold">
         {languages.map((language, index) => {
           const isLanguageLost = index < wrongGuessCount;
