@@ -1,4 +1,5 @@
 const Keyboard = (props) => {
+  console.log(props.disabled);
   return (
     <section>
       <div className="flex flex-wrap justify-center items-center mt-10 text-3xl font-bold gap-2 md:max-w-[500px] md:text-6xl md:gap-3">
@@ -13,8 +14,13 @@ const Keyboard = (props) => {
             : "bg-yellow-400";
           return (
             <button
+              disabled={props.disabled}
               key={index}
-              className={`w-16 py-4 uppercase text-center font-bold ${buttonStyle} w-max-[450px] text-black border-1 border-white rounded-lg hover:bg-yellow-500 transition duration-300 ease-in-out cursor-pointer md:w-23`}
+              className={`w-16 py-4 uppercase text-center font-bold ${buttonStyle} w-max-[450px] text-black border-1 border-white rounded-lg transition duration-300 ease-in-out md:w-23 ${
+                props.disabled
+                  ? "cursor-not-allowed grayscale-70"
+                  : "cursor-pointer"
+              } ${!props.disabled ? "hover:bg-yellow-500" : ""}`}
               onClick={() => props.onLetterClick(letter)}
             >
               {letter}

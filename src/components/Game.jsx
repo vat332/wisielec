@@ -78,6 +78,7 @@ const Game = () => {
       <section className="flex flex-col items-center justify-center">
         <GameWord letterElements={letterElements} />
         <Keyboard
+          disabled={isGameOver}
           letters={alphabet}
           onLetterClick={handleLetterClick}
           currentWord={currentWord}
