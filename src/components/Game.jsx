@@ -15,6 +15,10 @@ const Game = () => {
     .split("")
     .every((letter) => guessedLetters.includes(letter));
 
+  function startNewGame() {
+    setCurrentWord(getRandomWord());
+    setGuessedLetters([]);
+  }
   const wrongGuessCount = guessedLetters.filter(
     (letter) => !currentWord.includes(letter)
   ).length;
@@ -87,7 +91,7 @@ const Game = () => {
         />
       </section>
 
-      {isGameOver && <Button />}
+      {isGameOver && <Button startNewGame={startNewGame} />}
     </div>
   );
 };
