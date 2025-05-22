@@ -21,7 +21,7 @@ const Game = () => {
     setGuessedLetters([]);
   }
   const wrongGuessCount = guessedLetters.filter(
-    (letter) => !currentWord.includes(letter)
+    (letter) => !currentWord.includes(letter),
   ).length;
   const isGameLost = wrongGuessCount >= languages.length - 1;
   const isGameOver = isGameWon || isGameLost;
@@ -30,7 +30,7 @@ const Game = () => {
     lastGuessedLetter && !currentWord.includes(lastGuessedLetter);
   function handleLetterClick(letter) {
     setGuessedLetters((prevLetters) =>
-      prevLetters.includes(letter) ? prevLetters : [...prevLetters, letter]
+      prevLetters.includes(letter) ? prevLetters : [...prevLetters, letter],
     );
   }
   const letterElements = currentWord.split("").map((letter, index) => {
@@ -42,7 +42,7 @@ const Game = () => {
     return (
       <span
         key={index}
-        className={`w-15 py-4 uppercase border-b-4 text-center font-light bg-gray-700 ${textColor}`}
+        className={`w-15 border-b-4 bg-gray-700 py-4 text-center font-light uppercase ${textColor}`}
       >
         {shouldRevealLetter ? letter : "_"}
       </span>
@@ -68,11 +68,11 @@ const Game = () => {
   };
 
   return (
-    <div className="md:max-w-[800px] justify-center items-center">
+    <div className="items-center justify-center md:max-w-[800px]">
       {isGameWon && <ReactConfetti recycle={false} numberOfPieces={1000} />}
       {renderGameStatus()}
 
-      <section className="gap-2 flex flex-wrap justify-center items-center text-2xl font-bold">
+      <section className="flex flex-wrap items-center justify-center gap-2 text-2xl font-bold">
         {languages.map((language, index) => {
           const isLanguageLost = index < wrongGuessCount;
 

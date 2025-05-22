@@ -1,8 +1,8 @@
 const Button = (props) => {
   return (
-    <div className="flex flex-wrap justify-center items-center  text-3xl font-bold gap-2">
+    <div className="flex flex-wrap items-center justify-center gap-2 text-3xl font-bold">
       <button
-        className="py-4 px-20 bg-blue-400 text-black text-5xl font-bold rounded-lg hover:bg-blue-500 transition duration-300 ease-in-out cursor-pointer text-white"
+        className="cursor-pointer rounded-lg bg-blue-400 px-20 py-4 text-5xl font-bold text-white transition duration-300 ease-in-out hover:bg-blue-500"
         onClick={() => props.startNewGame()}
       >
         Nowa gra

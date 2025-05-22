@@ -1,6 +1,6 @@
 const GameWord = (props) => {
   return (
-    <section className="flex justify-center flex-wrap items-center mt-5 text-4xl font-bold gap-2">
+    <section className="mt-5 flex flex-wrap items-center justify-center gap-2 text-4xl font-bold">
       {props.letterElements}
     </section>
   );

@@ -1,7 +1,7 @@
 const Languages = (props) => {
   return (
     <section
-      className={`rounded-lg shadow-lg p-2 ${
+      className={`rounded-lg p-2 shadow-lg ${
         props.isLost ? "opacity-50" : ""
       } `}
       style={{
