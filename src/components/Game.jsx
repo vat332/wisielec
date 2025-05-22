@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ReactConfetti from "react-confetti";
 import languages from "../data/constans";
 import { getFarewellText, getRandomWord } from "../data/utils";
 import Button from "./Button";
@@ -68,6 +69,7 @@ const Game = () => {
 
   return (
     <div className="md:max-w-[800px] justify-center items-center">
+      {isGameWon && <ReactConfetti recycle={false} numberOfPieces={1000} />}
       {renderGameStatus()}
 
       <section className="gap-2 flex flex-wrap justify-center items-center text-2xl font-bold">
