@@ -32,14 +32,21 @@ const Game = () => {
       prevLetters.includes(letter) ? prevLetters : [...prevLetters, letter]
     );
   }
-  const letterElements = currentWord.split("").map((letter, index) => (
-    <span
-      key={index}
-      className="w-15 py-4 uppercase border-b-4 text-center font-light bg-gray-700"
-    >
-      {guessedLetters.includes(letter) ? letter : "_"}
-    </span>
-  ));
+  const letterElements = currentWord.split("").map((letter, index) => {
+    const isGuessed = guessedLetters.includes(letter);
+    const shouldRevealLetter = isGameLost || isGuessed;
+
+    const textColor = isGameLost && !isGuessed ? "text-red-500" : "text-white";
+
+    return (
+      <span
+        key={index}
+        className={`w-15 py-4 uppercase border-b-4 text-center font-light bg-gray-700 ${textColor}`}
+      >
+        {shouldRevealLetter ? letter : "_"}
+      </span>
+    );
+  });
 
   const renderGameStatus = () => {
     return (
