@@ -2,7 +2,7 @@ const Keyboard = (props) => {
   console.log(props.disabled);
   return (
     <section>
-      <div className="flex flex-wrap justify-center items-center mt-10 text-3xl font-bold gap-2 md:max-w-[500px] md:text-6xl md:gap-3">
+      <div className="flex flex-wrap justify-center items-center mt-5 text-3xl font-bold gap-2 md:max-w-[500px] md:text-6xl md:gap-3 mb-5">
         {props.letters.split("").map((letter, index) => {
           const isGuessed = props.guessedLetters.includes(letter);
           const isCorrect = isGuessed && props.currentWord.includes(letter);
@@ -17,7 +17,7 @@ const Keyboard = (props) => {
               aria-disabled={props.disabled}
               disabled={props.disabled}
               key={index}
-              className={`w-16 py-4 uppercase text-center font-bold ${buttonStyle} w-max-[450px] text-black border-1 border-white rounded-lg transition duration-300 ease-in-out md:w-23 ${
+              className={`w-16 p-3 uppercase text-center font-bold ${buttonStyle} w-max-[450px] text-black border-1 border-white rounded-lg transition duration-300 ease-in-out md:w-23 ${
                 props.disabled
                   ? "cursor-not-allowed grayscale-70"
                   : "cursor-pointer"

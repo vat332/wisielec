@@ -43,7 +43,7 @@ const Game = () => {
 
   const renderGameStatus = () => {
     return (
-      <section>
+      <section className="min-h-[100px]">
         <GameStatus
           isGameOver={isGameOver}
           isGameWon={isGameWon}
@@ -63,7 +63,7 @@ const Game = () => {
     <div className="md:max-w-[800px] justify-center items-center">
       {renderGameStatus()}
 
-      <section className="gap-2 flex flex-wrap justify-center items-center mt-10 text-2xl font-bold">
+      <section className="gap-2 flex flex-wrap justify-center items-center text-2xl font-bold">
         {languages.map((language, index) => {
           const isLanguageLost = index < wrongGuessCount;
 

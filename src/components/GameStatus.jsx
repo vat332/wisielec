@@ -19,8 +19,8 @@ const GameStatus = ({
 
   if (isLastGuessedIncorrect && !isGameOver && farewellText) {
     return (
-      <div className="flex flex-col items-center justify-center gap-4 p-10 h-60 text-center mt-10 bg-purple-800 text-white rounded-full shadow-lg">
-        <h1 className="text-4xl font-bold">{farewellText}</h1>
+      <div className="flex flex-col items-center justify-center p-5 h-33 text-center bg-purple-800 text-white rounded-full shadow-lg">
+        <h1 className="text-3xl font-bold">{farewellText}</h1>
       </div>
     );
   }
@@ -30,10 +30,10 @@ const GameStatus = ({
 
     return (
       <section
-        className={`flex flex-col items-center justify-center gap-4 p-10 text-center mt-10 ${status.backgroundColor} text-white rounded-full shadow-lg`}
+        className={`flex flex-col items-center justify-center gap-4 p-5 h-35 text-center  ${status.backgroundColor} text-white rounded-full shadow-lg`}
       >
-        <h2 className="text-6xl font-bold">{status.title}</h2>
-        <span className="text-4xl mt-4">{status.message}</span>
+        <h2 className="text-3xl font-bold">{status.title}</h2>
+        <span className="text-3xl">{status.message}</span>
       </section>
     );
   }

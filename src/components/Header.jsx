@@ -10,8 +10,8 @@ const Header = () => {
       <p className="text-3xl text-p-50 max-w-[350px] mt-4 md:text-4xl lg:text-5xl md:max-w-[500px] lg:max-w-[600px]">
         Zgadnij słowo, zanim powiesimy wisielca! Masz na to 8 prób.
         <span
-          className="text-white flex justify-center mt-5 
-        text-4xl md:text-6xl lg:text-7xl font-extrabold"
+          className="text-white flex justify-center mt-2 
+        text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4"
         >
           Powodzenia!!!🤞🏼
         </span>
