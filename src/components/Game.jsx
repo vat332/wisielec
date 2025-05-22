@@ -42,7 +42,7 @@ const Game = () => {
     return (
       <span
         key={index}
-        className={`w-15 border-b-4 bg-gray-700 py-4 text-center font-light uppercase ${textColor}`}
+        className={`w-15 border-b-4 bg-gray-700 py-4 text-center font-light uppercase ${textColor} md:my-6 md:w-35`}
       >
         {shouldRevealLetter ? letter : "_"}
       </span>
@@ -51,7 +51,7 @@ const Game = () => {
 
   const renderGameStatus = () => {
     return (
-      <section className="min-h-[100px]">
+      <section className="min-h-[100px] md:min-h-[150px]">
         <GameStatus
           isGameOver={isGameOver}
           isGameWon={isGameWon}
@@ -68,7 +68,7 @@ const Game = () => {
   };
 
   return (
-    <div className="items-center justify-center md:max-w-[800px]">
+    <div className="items-center justify-center md:max-w-[1000px]">
       {isGameWon && <ReactConfetti recycle={false} numberOfPieces={1000} />}
       {renderGameStatus()}
 

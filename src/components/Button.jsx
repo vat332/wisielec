@@ -2,7 +2,7 @@ const Button = (props) => {
   return (
     <div className="flex flex-wrap items-center justify-center gap-2 text-3xl font-bold">
       <button
-        className="cursor-pointer rounded-lg bg-blue-400 px-20 py-4 text-5xl font-bold text-white transition duration-300 ease-in-out hover:bg-blue-500"
+        className="cursor-pointer rounded-lg bg-blue-400 px-20 py-4 text-5xl font-bold text-white transition duration-300 ease-in-out hover:bg-blue-500 md:px-25 md:py-10 md:text-8xl"
         onClick={() => props.startNewGame()}
       >
         Nowa gra
