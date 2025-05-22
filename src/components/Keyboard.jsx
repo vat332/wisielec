@@ -14,6 +14,7 @@ const Keyboard = (props) => {
             : "bg-yellow-400";
           return (
             <button
+              aria-disabled={props.disabled}
               disabled={props.disabled}
               key={index}
               className={`w-16 py-4 uppercase text-center font-bold ${buttonStyle} w-max-[450px] text-black border-1 border-white rounded-lg transition duration-300 ease-in-out md:w-23 ${

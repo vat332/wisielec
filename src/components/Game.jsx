@@ -1,6 +1,6 @@
 import { useState } from "react";
 import languages from "../data/constans";
-import { getFarewellText } from "../data/utils";
+import { getFarewellText, getRandomWord } from "../data/utils";
 import Button from "./Button";
 import GameStatus from "./GameStatus";
 import GameWord from "./GameWord";
@@ -8,7 +8,7 @@ import Keyboard from "./Keyboard";
 import Languages from "./Languages";
 
 const Game = () => {
-  const [currentWord, setCurrentWord] = useState("react");
+  const [currentWord, setCurrentWord] = useState(() => getRandomWord());
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
   const [guessedLetters, setGuessedLetters] = useState([]);
   const isGameWon = currentWord
@@ -80,6 +80,7 @@ const Game = () => {
         <Keyboard
           disabled={isGameOver}
           letters={alphabet}
+          aria-disabled={isGameOver}
           onLetterClick={handleLetterClick}
           currentWord={currentWord}
           guessedLetters={guessedLetters}

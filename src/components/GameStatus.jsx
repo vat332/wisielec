@@ -19,7 +19,7 @@ const GameStatus = ({
 
   if (isLastGuessedIncorrect && !isGameOver && farewellText) {
     return (
-      <div className="flex flex-col items-center justify-center gap-4 p-10 text-center mt-10 bg-purple-800 text-white rounded-full shadow-lg">
+      <div className="flex flex-col items-center justify-center gap-4 p-10 h-60 text-center mt-10 bg-purple-800 text-white rounded-full shadow-lg">
         <h1 className="text-4xl font-bold">{farewellText}</h1>
       </div>
     );
