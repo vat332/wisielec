@@ -12,7 +12,7 @@ const Game = () => {
   const [currentWord, setCurrentWord] = useState(() => getRandomWord());
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
   const [guessedLetters, setGuessedLetters] = useState([]);
-  const isGameWon = currentWord
+  const isGameWon = currentWord.name
     .split("")
     .every((letter) => guessedLetters.includes(letter));
 
@@ -20,20 +20,21 @@ const Game = () => {
     setCurrentWord(getRandomWord());
     setGuessedLetters([]);
   }
+  console.log(currentWord.name);
   const wrongGuessCount = guessedLetters.filter(
-    (letter) => !currentWord.includes(letter),
+    (letter) => !currentWord.name.includes(letter),
   ).length;
   const isGameLost = wrongGuessCount >= languages.length - 1;
   const isGameOver = isGameWon || isGameLost;
   const lastGuessedLetter = guessedLetters[guessedLetters.length - 1];
   const isLastGuessedIncorrect =
-    lastGuessedLetter && !currentWord.includes(lastGuessedLetter);
+    lastGuessedLetter && !currentWord.name.includes(lastGuessedLetter);
   function handleLetterClick(letter) {
     setGuessedLetters((prevLetters) =>
       prevLetters.includes(letter) ? prevLetters : [...prevLetters, letter],
     );
   }
-  const letterElements = currentWord.split("").map((letter, index) => {
+  const letterElements = currentWord.name.split("").map((letter, index) => {
     const isGuessed = guessedLetters.includes(letter);
     const shouldRevealLetter = isGameLost || isGuessed;
 
@@ -71,8 +72,12 @@ const Game = () => {
     <div className="items-center justify-center md:max-w-[1000px]">
       {isGameWon && <ReactConfetti recycle={false} numberOfPieces={1000} />}
       {renderGameStatus()}
+      <div className="mb-4 text-center text-3xl font-semibold text-gray-300">
+        Kategoria:{" "}
+        <span className="text-yellow-400">{currentWord.category}</span>
+      </div>
 
-      <section className="flex flex-wrap items-center justify-center gap-2 text-2xl font-bold">
+      <section className="flex flex-wrap items-center justify-center gap-2 text-xl font-bold">
         {languages.map((language, index) => {
           const isLanguageLost = index < wrongGuessCount;
 

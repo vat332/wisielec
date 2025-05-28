@@ -5,7 +5,9 @@ const Keyboard = (props) => {
       <div className="mt-5 mb-5 flex flex-wrap items-center justify-center gap-2 text-3xl font-bold md:max-w-[500px] md:gap-3 md:text-6xl">
         {props.letters.split("").map((letter, index) => {
           const isGuessed = props.guessedLetters.includes(letter);
-          const isCorrect = isGuessed && props.currentWord.includes(letter);
+
+          const isCorrect =
+            isGuessed && props.currentWord.name.includes(letter);
 
           const buttonStyle = isGuessed
             ? isCorrect
